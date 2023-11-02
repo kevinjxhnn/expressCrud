@@ -41,7 +41,7 @@ async function initializeApp() {
 
   app.use(express.json());
 
-  const todoSchema = yup.object().shape({
+  const todoValidation = yup.object().shape({
     text: yup.string().required(),
     isCompleted: yup.boolean().required(),
   });
@@ -69,7 +69,7 @@ async function initializeApp() {
     try {
       const { text, isCompleted } = req.body;
       const body = { text, isCompleted };
-      await todoSchema.validate(body);
+      await todoValidation.validate(body);
       const createdTodo = await Todo.create(body);
       res.status(201).json(createdTodo);
     } catch (err) {
@@ -86,7 +86,7 @@ async function initializeApp() {
       const todo = await Todo.findByPk(id);
 
       if (todo) {
-        await todoSchema.validate(body);
+        await todoValidation.validate(body);
         await todo.update(body);
         res.status(200).json(todo);
       } else {
