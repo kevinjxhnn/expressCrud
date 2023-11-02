@@ -43,15 +43,26 @@ This project implements a RESTful API for managing a todo list using Express, wi
 
 Before running the project, make sure you have a PostgreSQL database set up and configure the database credentials in the project.
 
-1. Navigate to the `src` folder:
+1. Ensure that you create the todos table using the following command
+
+   ```
+   CREATE TABLE todos (
+   id serial PRIMARY KEY,
+   text varchar(255),
+   "isCompleted" boolean
+   );
+   ```
+
+2. Navigate to the `src` folder:
    ```bash
    cd src
    ```
-2. Make sure to update the database credentials in the config.js file to match your setup.
+3. Make sure to update the database credentials in the config.js file to match your setup.
 
-3. To start the application, run the following command: 
-    ```
-    node app.js
-    ```
+4. To start the application, run the following command:
 
-4. This will start the application and make it accessible at the defined endpoints
+   ```
+   node app.js
+   ```
+
+5. This will start the application and make it accessible at the defined endpoints
