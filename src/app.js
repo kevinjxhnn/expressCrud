@@ -1,20 +1,10 @@
 const express = require('express');
-const { DataTypes, Sequelize } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const yup = require('yup');
+const sequelize = require('./config');
 
 const app = express();
-
 const port = 3000;
-
-// Database connection
-const sequelize = new Sequelize({
-  username: 'kevinjxhn',
-  database: 'todos',
-  password: 'rootuser',
-  dialect: 'postgres',
-  host: 'localhost',
-  port: 5432,
-});
 
 // Defining the Todo Model
 const Todo = sequelize.define(

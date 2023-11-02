@@ -41,10 +41,17 @@ This project implements a RESTful API for managing a todo list using Express, wi
 
 ## Running the Project
 
-To run the project, make sure you have a PostgreSQL database set up and configure the database credentials in the project. After that, you can run the app using the following command:
+Before running the project, make sure you have a PostgreSQL database set up and configure the database credentials in the project.
 
-```
- node app.js
-```
+1. Navigate to the `src` folder:
+   ```bash
+   cd src
+   ```
+2. Make sure to update the database credentials in the config.js file to match your setup.
 
-Make sure to update the database credentials in the project configuration to match your setup.
+3. To start the application, run the following command: 
+    ```
+    node app.js
+    ```
+
+4. This will start the application and make it accessible at the defined endpoints
