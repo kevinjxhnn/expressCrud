@@ -68,7 +68,7 @@ async function initializeApp() {
   });
 
   // to update a todo
-  app.post('/todos/:id', async (req, res) => {
+  app.put('/todos/:id', async (req, res) => {
     try {
       const id = req.params.id;
       const { text, isCompleted } = req.body;
