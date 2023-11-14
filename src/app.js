@@ -2,9 +2,12 @@ const express = require('express');
 const { DataTypes } = require('sequelize');
 const yup = require('yup');
 const sequelize = require('./config');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.SERVER_PORT || 3000;
 
 // Defining the Todo Model
 const Todo = sequelize.define(
@@ -75,13 +78,13 @@ async function initializeApp() {
       const body = { text, isCompleted };
       const todo = await Todo.findByPk(id);
 
-      if (todo) {
-        await todoValidation.validate(body);
-        await todo.update(body);
-        res.status(200).json(todo);
-      } else {
-        res.status(404).json({ message: 'todo not found to update' });
+      if (!todo) {
+        return res.status(404).json({ message: 'Todo not found to update' });
       }
+
+      await todoValidation.validate(body);
+      await todo.update(body);
+      res.status(200).json(todo);
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
@@ -91,15 +94,14 @@ async function initializeApp() {
   app.delete('/todos/:id', async (req, res) => {
     try {
       const id = req.params.id;
-      console.log(id);
       const todo = await Todo.findByPk(id);
 
-      if (todo) {
-        await todo.destroy();
-        res.status(204).send();
-      } else {
-        res.status(404).json({ message: 'todo not found to delete' });
+      if (!todo) {
+        return res.status(404).json({ message: 'Todo not found to delete' });
       }
+
+      await todo.destroy();
+      res.status(204).send();
     } catch (err) {
       res.status(400).json({ message: err.message });
     }

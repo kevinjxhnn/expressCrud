@@ -2,6 +2,8 @@
 
 This project implements a RESTful API for managing a todo list using Express, with data storage in a PostgreSQL database facilitated by the Sequelize ORM. It enforces proper HTTP status codes and input validation using the Yup library.
 
+---
+
 ## API Endpoints
 
 ### Fetch Todo List
@@ -29,6 +31,8 @@ This project implements a RESTful API for managing a todo list using Express, wi
 - **Endpoint:** `DELETE` `/todos/:id`
 - **Description:** Deletes the specified todo identified by the `id` path parameter.
 
+---
+
 ## Implementation Details
 
 - **Express**: The project uses Express.js, a popular Node.js web application framework, for creating the API endpoints.
@@ -39,11 +43,17 @@ This project implements a RESTful API for managing a todo list using Express, wi
 
 - **Sequelize ORM**: Sequelize is used as the Object-Relational Mapping (ORM) tool to interact with the database, simplifying database operations.
 
-## Running the Project
+### Running the Project
 
 Before running the project, make sure you have a PostgreSQL database set up and configure the database credentials in the project.
 
-1. Ensure that you create the todos table using the following command
+--- 
+
+### Steps
+
+1. Clone the repository to your local machine and install the dependencies.
+
+2. Ensure that you create the todos table using the following command
 
    ```
    CREATE TABLE todos (
@@ -53,16 +63,22 @@ Before running the project, make sure you have a PostgreSQL database set up and 
    );
    ```
 
-2. Navigate to the `src` folder:
+3. Navigate to the `src` folder:
    ```bash
    cd src
    ```
-3. Make sure to update the database credentials in the config.js file to match your setup.
 
-4. To start the application, run the following command:
+4. Configure your database connection by creating a .env file. You can follow the envExample file. Ensure that the development environment in the .env file matches your PostgreSQL database settings.
+
+
+5. Make sure to update the database credentials in the config.js file to match your setup.
+
+6. To start the application, run the following command:
 
    ```
    node app.js
    ```
 
-5. This will start the application and make it accessible at the defined endpoints
+7. This will start the application and make it accessible at the defined endpoints
+
+---
